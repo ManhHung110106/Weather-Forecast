@@ -12,39 +12,33 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # Main function (Hàm chính)
 def main():
-    # Cities (Các thành phố)
     city_names = ["basel", "budapest", "de_bilt", "dresden", "dusseldorf", "heathrow", "kassel", "ljubljana", "maastricht", "malmo", "montelimar", "muenchen", "oslo", "perpignan", "roma", "sonnblick", "stockholm", "tours"]
-    
-    # Group data by month for each city
     for name in city_names:
         globals()[name] = data_group_by_month(globals()[name])
-    
     try:
         selected_city = input("\033[96mSelect a city:\033[0m ").lower().strip()
-        if selected_city in city_names:
-            selected_city = selected_city.upper()
-            selected_thermodynamic_variables = ["cloud_cover","humidity","pressure","global_radiation","precipitation","sunshine","temp_mean","temp_min","temp_max"]
-            print(selected_thermodynamic_variables)
-            variable = input("\033[96mSelect one thermodynamic variable above:\033[0m ")
-            try:
-                if variable in selected_thermodynamic_variables:
-                    pass
-            except ValueError:
-                print("\033[91mSelect one thermodynamic variable:\033[0m", selected_thermodynamic_variables)
-            prophet_data, column = prepare_prophet_data(globals()[selected_city.lower()], f"{selected_city}_{variable}")
-            target_date = input("\033[96mDate (YYYYMMDD):\033[0m ")
-            try:
-                if datetime.strptime(target_date , "%Y%m%d") == True:
-                    pass
-            except ValueError:
-                print("Input date with format: \033[91mYYYYMMDD\033[0m!")
-            model, forecast, train, test = training(prophet_data, column, target_date)
-            evaluate_model(model, forecast, train, test)
-        else:
-            raise ValueError
-    except ValueError:
-        print("\033[91mSelect one city in this list:\033[0m\n", city_names)
-        return
+        if selected_city not in city_names:
+            raise ValueError(f"\033[91mSelect one city in this list:\033[0m\n {city_names}")
+        
+        selected_city = selected_city.upper()
+        selected_thermodynamic_variables = ["cloud_cover", "humidity", "pressure", "global_radiation", "precipitation", "sunshine", "temp_mean", "temp_min", "temp_max"]
+        print(selected_thermodynamic_variables)
+        variable = input("\033[96mSelect one thermodynamic variable above:\033[0m ").lower().strip()
+        if variable not in selected_thermodynamic_variables:
+            raise ValueError(f"\033[91mSelect one thermodynamic variable:\033[0m {selected_thermodynamic_variables}")
+        
+        prophet_data, column = prepare_prophet_data(globals()[selected_city.lower()], f"{selected_city}_{variable}")
+
+        target_date = input("\033[96mDate (YYYYMMDD):\033[0m ").strip()
+        try:
+            datetime.strptime(target_date, "%Y%m%d")
+        except ValueError:
+            raise ValueError("Input date with format: \033[91mYYYYMMDD\033[0m!")
+        model, forecast, train, test = training(prophet_data, column, target_date)
+        evaluate_model(model, forecast, train, test)
+        
+    except ValueError as ve:
+        print(ve)
     
 # Preparing and cleaning data: Chuẩn bị và làm sạch dữ liệu
     # Load data: CSV file: "weather_prediction_dataset.csv" (Nhập file dữ liệu)
