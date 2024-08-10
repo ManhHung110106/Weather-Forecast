@@ -9,7 +9,7 @@ Model for data processing: Prophet: Open source library developed by Facebook, b
 - Method of evaluating the problem:
 Mean Squared Error (MSE): average of the squares of errors between the predicted value and the actual value.
 
-## Installation:
+## Installation
 - Clone from github: [Github](https://github.com/ManhHung110106/Final-Project-Weather-Forecast.git)
 - Python, using pip to install libraries: *pip install -r requirements.txt*
 
