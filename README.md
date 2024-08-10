@@ -24,6 +24,7 @@ Mean Squared Error (MSE): average of the squares of errors between the predicted
 ### Methods used:
 - Data processing method: Interquartile Range (IQR):
 Interquartile range, used to identify and filter outliers values. A value is suspected to be an outlier if it is less than 1.5*IQR below the first quartile $(Q1 - 1.5\times IQR)$ or greater $(1.5 \times IQR)$ above the third quartile $(Q3 + 1.5 \times IQR)$.
+
 &rarr; This method assumes that data outside the upper and lower bounds are outliers
 ### Approach: Prophet:
 - Easy-to-use interface, easy to deploy.
@@ -43,4 +44,4 @@ Mean Squared Error on test set: 13,057
 
  &rarr; Shows that the model is not overfitting and has good generalization ability when predicting on new data.
 
-![Graph: Basel Mean Temperature - Date](path/to/graph.jpg)
+![Graph: Basel Mean Temperature - Date](graph.jpg)
