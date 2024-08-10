@@ -44,9 +44,6 @@ def main():
     # Load data: CSV file: "weather_prediction_dataset.csv" (Nhập file dữ liệu)
 data = pd.read_csv("weather_prediction_dataset.csv")
 print("\033[96mQuick look:\033[0m\n", data.head(5))
-print("\033[96mData information:\033[0m")
-data.info()
-print("\033[96mDescribe data:\033[0m\n", data.describe())
 
     # Clean data (làm sạch dữ liệu)
 data = data.dropna().drop_duplicates()  # Removing missing values and duplicates (Loại bỏ giá trị bị thiếu và các bản sao)
