@@ -11,7 +11,7 @@ Mean Squared Error (MSE): average of the squares of errors between the predicted
 
 ## Installation:
 - Clone from github: [Github](https://github.com/ManhHung110106/Final-Project-Weather-Forecast.git)
-- Python, using pip to install libraries: pip install -r requirements.txt
+- Python, using pip to install libraries: *pip install -r requirements.txt*
 
 ## Files
 - Data: weather_prediction_dataset.csv
@@ -43,4 +43,4 @@ Mean Squared Error on test set: 13,057
 
  &rarr; Shows that the model is not overfitting and has good generalization ability when predicting on new data.
 
-<img title="Graph" src="/images/graph.jpg">
+![Graph: Basel Mean Temperature - Date](path/to/graph.jpg)
