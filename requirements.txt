@@ -1,0 +1,7 @@
+pandas
+matplotlib
+prophet
+sklearn
+datetime
+logging
+warnings
