@@ -38,10 +38,10 @@ ARIMA's MSE: Usually smaller when the data is linear, without many obvious nonli
 Prophet's MSE: Usually smaller in cases where the data has a nonlinear trend or clear seasonality.
 - Prophet is often superior in more complex situations, while ARIMA may be better for simple time series.
 ## Conclusion:
-- Mean Squared Error on training set: 13,080
+- Mean Squared Error on training set: 13.080
 
  &rarr; the model is already capable of capturing the characteristics of the data during the learning process.
-Mean Squared Error on test set: 13,057
+Mean Squared Error on test set: 13.057
 
  &rarr; Very close to the MSE on the training set,
 
